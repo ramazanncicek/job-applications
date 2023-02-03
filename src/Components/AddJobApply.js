@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Container,Row,Col,Form} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button} from 'react-bootstrap';
 
 export default function AddJobApply() {
   const [companyName,setCompanyName] = useState('');
@@ -37,6 +37,24 @@ export default function AddJobApply() {
 
   const handleResume = (e) => {
     setSelectedResume(e.target.files[0]);
+  }
+
+  const sendFinalPackage = () => {
+    let finalPackage = {
+      companyName: companyName,
+      position: position,
+      location: location,
+      date: dateApplied,
+      minYears: minYears,
+      relatedDiploma: relatedDiploma,
+      salaryExpectance: salaryExpectance,
+      salaryCurrency: salaryCurrency,
+      takenNotes: takenNotes,
+      hardSkills: hardSkill,
+      niceToHaves: niceHaveSkill,
+      resume: selectedResume,
+      images: threeImages
+    }
   }
 
   return (
@@ -143,6 +161,9 @@ export default function AddJobApply() {
                   </ul>
                   ) : null}
             </Col>
+        </Row>
+        <Row>
+          <Button variant='info'>Save</Button>
         </Row>
     </Container>
   )
